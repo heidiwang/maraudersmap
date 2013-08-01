@@ -9,11 +9,23 @@ class MaraudersmapController < ApplicationController
    	@contents = @file.read
 
    	@parsed = JSON.parse(@contents)
-   	@locations = Hash.new
+   	@users = Hash.new
     @parsed.each do |item|
     	username = item[1]["username"]
-    	@locations[username] = item[1]["ap"]
+    	ap = item[1]["ap"]
+    	if ((is_ecr(ap)) && !is_guest(username))
+    		@users[username] = ap
+    	end
    	end
+  end
 
+  private
+  def is_ecr(ap_name)
+  	echo ap_name
+  	return (ap_name.ends_with?(".ecr"))
+  end
+
+  def is_guest(username)
+  	return (username == "\"\"")
   end
 end
