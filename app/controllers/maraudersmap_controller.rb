@@ -13,7 +13,7 @@ class MaraudersmapController < ApplicationController
     @parsed.each do |item|
     	username = item[1]["username"]
     	ap = item[1]["ap"]
-    	if ((is_ecr(ap)) && !is_guest(username))
+    	if (is_ecr(ap))
     		@users[username] = ap
     	end
    	end
@@ -21,8 +21,7 @@ class MaraudersmapController < ApplicationController
 
   private
   def is_ecr(ap_name)
-  	echo ap_name
-  	return (ap_name.ends_with?(".ecr"))
+  	return (!ap_name.nil? && ap_name.end_with?(".ecr"))
   end
 
   def is_guest(username)
