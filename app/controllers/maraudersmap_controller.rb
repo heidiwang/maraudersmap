@@ -44,6 +44,11 @@ class MaraudersmapController < ApplicationController
 
   def search
   	@searchstring = (params[:search])
+
+    if (@searchstring == "Phillip Ho")
+      @searchstring = "pho"
+    end
+
   	@query = $users[@searchstring]
   	if (@query.nil?)
   		redirect_to :action => "first", :selected_user => @searchstring, :message => "User " + @searchstring + " not found :("

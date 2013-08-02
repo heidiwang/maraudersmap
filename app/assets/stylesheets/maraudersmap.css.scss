@@ -8,7 +8,9 @@ body {
 
 h1 {
 	font-family: Arial;
+	text-transform: uppercase;
 }
+
 
 .navbutton {
 	background-color: #1a74ba;
@@ -16,6 +18,10 @@ h1 {
 	text-decoration: none;
 	padding: 4px;
 	border-radius: 3px;
+}
+
+.header {
+	display: inline;
 }
 
 #map_container {
@@ -34,6 +40,12 @@ h1 {
 	overflow: hidden;
 }
 
+.logo {
+	float: right;
+	padding-top: 20px;
+	padding-right: 50px;
+}
+
 .username {
 	display: inline-block;
 	margin-top: 3px;
@@ -46,6 +58,7 @@ h1 {
 }
 .selected_user {
 	background-color: yellow;
+	font-size: 20pt;
 }
 
 .hub:hover {

@@ -1,7 +1,8 @@
-<h1>Box Marauder's Map: First Floor</h1>
-<%= render "nav" %>
-<p>
 
+<img src="/images/boxers.png" class="logo"/>
+<h1>Find My Boxers: First Floor</h1>
+<%= render :partial => 'nav' %>
+<p>
 <%= params[:message] %>
 
 <div id="map_container">
@@ -16,9 +17,9 @@
 						<td>
 						<% half.each do |user| %>
 							<% if user == (params[:selected_user]) %>
-								<div class="username selected_user"><%= user %></div><br>
+								<div class="username selected_user"><%= user[0].upcase %>. <%= user[1..-1].capitalize %></div><br>
 							<% else %>
-								<div class="username"><%= user %></div><br>
+								<div class="username"><%= user[0].upcase %>. <%= user[1..-1].capitalize %></div><br>
 							<% end %>
 						<% end %>
 						</td>
