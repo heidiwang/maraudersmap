@@ -1,11 +1,13 @@
 <h1>Box Marauder's Map: Third Floor</h1>
 <%= render "nav" %>
 <p>
-<% @third_floor_users.each do |hub, users| %>
-	Hub: <%= hub %>
-	<br>
-	<% users.each do |user| %>
-		<%= user %>, 
+<div id="map_container">
+	<img class="map" src="/images/third.png"/>
+	<% @third_floor_users.each do |hub, users| %>
+		<div id="hub3-<%= hub %>" class="hub">
+			<% users.each do |user| %>
+				<%= user %><br>
+			<% end %>
+		</div>
 	<% end %>
-	<p>
-<% end %>
+</div>

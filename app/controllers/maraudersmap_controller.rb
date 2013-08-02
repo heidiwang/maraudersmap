@@ -37,7 +37,8 @@ class MaraudersmapController < ApplicationController
 
   private
   def is_ecr(ap_name)
-  	return (!ap_name.nil? && ap_name.end_with?(".ecr"))
+  	return (!ap_name.nil? && ap_name.end_with?(".ecr")) \
+  	|| (ap_name == "6c:f3:7f:c3:07:10") || (ap_name == "6c:f3:7f:c3:07:46")
   end
 
   def is_guest(username)
@@ -49,6 +50,12 @@ class MaraudersmapController < ApplicationController
   end
 
   def parse_hub_data(hubname)
+  	if (hubname == "6c:f3:7f:c3:07:10")
+  		return {"floor" => 2, "hub" => 11}
+  	elsif (hubname == "6c:f3:7f:c3:07:46")
+  		return {"floor" => 3, "hub" => 10}
+  	end
+
   	data = Hash.new
   	split_hubname = hubname.split(/\.|\-/)
   	data["floor"] = split_hubname[1].to_i
