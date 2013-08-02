@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'rubygems'
 require 'json'
+require 'cgi'
 
 class MaraudersmapController < ApplicationController
 
@@ -25,6 +26,7 @@ class MaraudersmapController < ApplicationController
 
   def first
   	@first_floor_users = get_floor(1)
+  	$test = (params[:selected_user])
   end
 
   def second
@@ -36,7 +38,19 @@ class MaraudersmapController < ApplicationController
   end
 
   def search
-  	redirect_to action: 'first'
+  	$searchstring = (params[:search])
+  	$query = $users[$searchstring]
+  	if ($query.nil?)
+  		redirect_to :back 
+  	elsif ($query["floor"] == 1)
+  		redirect_to action: 'first' + CGI.escape("?") + 'selected_user=' + $searchstring
+  	elsif ($query["floor"] == 2)
+  		redirect_to action: 'second'
+  	elsif ($query["floor"] == 3)
+  		redirect_to action: 'third'
+  	else 
+  		redirect_to :back
+  	end
   end
 
   private
