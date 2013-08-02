@@ -36,6 +36,7 @@ class MaraudersmapController < ApplicationController
   end
 
   def search
+  	redirect_to action: 'first'
   end
 
   private
