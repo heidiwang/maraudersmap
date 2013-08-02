@@ -23,6 +23,9 @@ class MaraudersmapController < ApplicationController
     		$users[username] = parse_hub_data(ap)
     	end
    	end
+
+
+   		
   end
 
   def first
