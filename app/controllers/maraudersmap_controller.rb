@@ -3,7 +3,8 @@ require 'rubygems'
 require 'json'
 
 class MaraudersmapController < ApplicationController
-  before_action :index
+
+  before_filter :index
 
   def index
    	@url = "https://net-util4001.ecr.box.net:4743/network/wireless_associations.json"
@@ -12,29 +13,26 @@ class MaraudersmapController < ApplicationController
 
    	@parsed = JSON.parse(@contents)
    	$users = Hash.new
-   	$hubs = Hash.new
 
     @parsed.each do |item|
     	username = item[1]["username"]
     	ap = item[1]["ap"]
     	if (is_ecr(ap) && !is_guest(username) && is_alphanumeric(username))
-    		$users[username] = ap
-    		if ($hubs[ap].nil?)
-    			$hubs[ap] = Array.new
-    		end
-    		$hubs[ap] << username
+    		$users[username] = parse_hub_data(ap)
     	end
    	end
   end
 
   def first
-  	@foo = "hello"
+  	@first_floor_users = get_floor(1)
   end
 
   def second
+  	@second_floor_users = get_floor(2)
   end
 
   def third
+  	@third_floor_users = get_floor(3)
   end
 
   private
@@ -48,5 +46,26 @@ class MaraudersmapController < ApplicationController
 
   def is_alphanumeric(username)
   	return username.match(/^[[:alpha:]]+$/)
+  end
+
+  def parse_hub_data(hubname)
+  	data = Hash.new
+  	split_hubname = hubname.split(/\.|\-/)
+  	data["floor"] = split_hubname[1].to_i
+  	data["hub"] = split_hubname[2].to_i
+  	return data               
+  end
+
+  def get_floor(floornumber)
+	@floor_users = Hash.new
+  	$users.each do |user, location|
+  		if(location["floor"] == floornumber)
+  			if (@floor_users[(location["hub"])].nil?)
+  				@floor_users[(location["hub"])] = Array.new
+  			end
+  			@floor_users[(location["hub"])] << user
+  		end
+  	end
+  	return @floor_users
   end
 end

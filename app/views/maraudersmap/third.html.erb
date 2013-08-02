@@ -1,2 +1,11 @@
 <h1>Box Marauder's Map: Third Floor</h1>
-<%= render "maraudersmap/nav" %>
+<%= render "nav" %>
+<p>
+<% @third_floor_users.each do |hub, users| %>
+	Hub: <%= hub %>
+	<br>
+	<% users.each do |user| %>
+		<%= user %>, 
+	<% end %>
+	<p>
+<% end %>
