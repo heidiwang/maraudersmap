@@ -2,15 +2,20 @@
 <%= render "nav" %>
 <p>
 
+<%= params[:message] %>
+
 <div id="map_container">
 	<img class="map" src="/images/first.png"/>
 	<% @first_floor_users.each do |hub, users| %>
 		<div id="hub1-<%= hub %>" class="hub">
 			<% users.each do |user| %>
-				<%= user %><br>
+				<% if user == (params[:selected_user]) %>
+					<span class="selected_user"><%= user %></span><br>
+				<% else %>
+					<span class="username"><%= user %></span><br>
+				<% end %>
 			<% end %>
 		</div>
 	<% end %>
 </div>
 <p>
-<%= $test %>

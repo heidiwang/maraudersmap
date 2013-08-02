@@ -1,12 +1,19 @@
 <h1>Box Marauder's Map: Third Floor</h1>
 <%= render "nav" %>
 <p>
+
+<%= params[:message] %>
+
 <div id="map_container">
 	<img class="map" src="/images/third.png"/>
 	<% @third_floor_users.each do |hub, users| %>
 		<div id="hub3-<%= hub %>" class="hub">
 			<% users.each do |user| %>
-				<%= user %><br>
+				<% if user == (params[:selected_user]) %>
+					<span class="selected_user"><%= user %></span>, 
+				<% else %>
+					<%= user %>, 
+				<% end %>
 			<% end %>
 		</div>
 	<% end %>

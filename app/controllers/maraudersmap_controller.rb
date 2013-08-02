@@ -26,7 +26,6 @@ class MaraudersmapController < ApplicationController
 
   def first
   	@first_floor_users = get_floor(1)
-  	$test = (params[:selected_user])
   end
 
   def second
@@ -38,18 +37,18 @@ class MaraudersmapController < ApplicationController
   end
 
   def search
-  	$searchstring = (params[:search])
-  	$query = $users[$searchstring]
-  	if ($query.nil?)
-  		redirect_to :back 
-  	elsif ($query["floor"] == 1)
-  		redirect_to action: 'first' + CGI.escape("?") + 'selected_user=' + $searchstring
-  	elsif ($query["floor"] == 2)
-  		redirect_to action: 'second'
-  	elsif ($query["floor"] == 3)
-  		redirect_to action: 'third'
+  	@searchstring = (params[:search])
+  	@query = $users[@searchstring]
+  	if (@query.nil?)
+  		redirect_to :action => "first", :selected_user => @searchstring, :message => "User " + @searchstring + " not found :("
+  	elsif (@query["floor"] == 1)
+  		redirect_to :action => "first", :selected_user => @searchstring, :message => "Found " + @searchstring + " on first floor!"
+  	elsif (@query["floor"] == 2)
+  		redirect_to :action => "second", :selected_user => @searchstring, :message => "Found " + @searchstring + " on second floor!"
+  	elsif (@query["floor"] == 3)
+  		redirect_to :action => "third", :selected_user => @searchstring, :message => "Found " + @searchstring + " on third floor!"
   	else 
-  		redirect_to :back
+  		redirect_to :action => "first", :selected_user => @searchstring, :message => "User " + @searchstring + " not found :("
   	end
   end
 

@@ -26,13 +26,25 @@ h1 {
 	width: 100%;
 }
 
+.selected_user {
+	color: yellow;
+	font-size: 18pt;
+}
+
 .hub {
 	position: absolute;
-	color: red;
+	width: 200px;
+	text-wrap:unrestricted;
+	overflow: hidden;
+}
+
+.username {
+	background-color: white;
+	padding: 2px;
+	border-radius: 3px;
+	color: black;
 	font-size: 10pt;
 	text-align: center;
-	height: 100px;
-	overflow: hidden;
 }
 
 .hub:hover {
