@@ -1,27 +1,9 @@
 <h1>Box Marauder's Map: First Floor</h1>
 <%= render "nav" %>
 <p>
-<!-- 
-<div id="map_container">
-	<img class="map" src="/images/first-oldblue.png"/>
-	<div id="hub1-1" class="hub"></div>
-	<div id="hub1-2" class="hub"></div>
-	<div id="hub1-3" class="hub"></div>
-	<div id="hub1-4" class="hub"></div>
-	<div id="hub1-5" class="hub"></div>
-	<div id="hub1-6" class="hub"></div>
-	<div id="hub1-7" class="hub"></div>
-	<div id="hub1-8" class="hub"></div>
-	<div id="hub1-9" class="hub"></div>
-	<div id="hub1-10" class="hub"></div>
-	<div id="hub1-11" class="hub"></div>
-	<div id="hub1-12" class="hub"></div>
-	<div id="hub1-13" class="hub"></div>
-</div>
- -->
 
 <div id="map_container">
-	<img class="map" src="/images/first-oldblue.png"/>
+	<img class="map" src="/images/first.png"/>
 	<% @first_floor_users.each do |hub, users| %>
 		<div id="hub1-<%= hub %>" class="hub">
 			<% users.each do |user| %>
