@@ -14,8 +14,13 @@
 				<% else %>
 					<span class="username"><%= user %></span><br>
 				<% end %>
+
+				<% @ad_url = "https://dashboard.inside-box.net/controllers/single_pages/test.php?test=" + user %>
 			<% end %>
 		</div>
 	<% end %>
 </div>
+<br>
+
+<%=  @ad_url %>
 <p>
