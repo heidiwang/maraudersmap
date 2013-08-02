@@ -8,13 +8,23 @@
 	<img class="map" src="/images/second.png"/>
 	<% @second_floor_users.each do |hub, users| %>
 		<div id="hub2-<%= hub %>" class="hub">
-			<% users.each do |user| %>
-				<% if user == (params[:selected_user]) %>
-					<span class="selected_user"><%= user %></span>, 
-				<% else %>
-					<%= user %>, 
-				<% end %>
-			<% end %>
+			<table>
+				<tr>
+					<% @half = (users.count/2.0).ceil %>
+					<% @split_users = users.in_groups_of(@half, false) %>
+					<% @split_users.each do |half| %>
+						<td>
+						<% half.each do |user| %>
+							<% if user == (params[:selected_user]) %>
+								<span class="username selected_user"><%= user %></span><br>
+							<% else %>
+								<span class="username"><%= user %></span><br>
+							<% end %>
+						<% end %>
+						</td>
+					<% end %>
+				</tr>
+			</table>
 		</div>
 	<% end %>
 </div>

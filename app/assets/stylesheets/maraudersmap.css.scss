@@ -26,10 +26,6 @@ h1 {
 	width: 100%;
 }
 
-.selected_user {
-	color: yellow;
-	font-size: 18pt;
-}
 
 .hub {
 	position: absolute;
@@ -39,12 +35,17 @@ h1 {
 }
 
 .username {
+	display: inline-block;
+	margin-top: 3px;
 	background-color: white;
 	padding: 2px;
 	border-radius: 3px;
 	color: black;
 	font-size: 10pt;
 	text-align: center;
+}
+.selected_user {
+	background-color: yellow;
 }
 
 .hub:hover {
@@ -80,11 +81,11 @@ h1 {
 	left: 720px;
 }
 #hub1-8 {
-	top: 225px;
+	top: 175px;
 	left: 1020px;
 }
 #hub1-9 {
-	top: 235px;
+	top: 205px;
 	left: 1230px;
 }
 #hub1-10 {
@@ -124,7 +125,7 @@ h1 {
 }
 #hub2-5 {
 	top: 245px;
-	left: 80px;
+	left: 60px;
 }
 #hub2-6 {
 	top: 85px;
@@ -143,8 +144,8 @@ h1 {
 	left: 805px;
 }
 #hub2-10 {
-	top: 260px;
-	left: 1005px;
+	top: 210px;
+	left: 1025px;
 }
 #hub2-11 {
 	top: 195px;

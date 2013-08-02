@@ -2,6 +2,7 @@ require 'open-uri'
 require 'rubygems'
 require 'json'
 require 'cgi'
+require 'net/http';
 
 class MaraudersmapController < ApplicationController
 
@@ -25,6 +26,8 @@ class MaraudersmapController < ApplicationController
   end
 
   def first
+	uri = URI('https://dashboard.inside-box.net/controllers/single_pages/test.php?test=hwang')
+	@body = Net::HTTP.get(uri)
   	@first_floor_users = get_floor(1)
   end
 
