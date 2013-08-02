@@ -35,6 +35,9 @@ class MaraudersmapController < ApplicationController
   	@third_floor_users = get_floor(3)
   end
 
+  def search
+  end
+
   private
   def is_ecr(ap_name)
   	return (!ap_name.nil? && ap_name.end_with?(".ecr")) \
