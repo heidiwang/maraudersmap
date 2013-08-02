@@ -27,10 +27,16 @@ h1 {
 }
 
 .hub {
-	background-color: red;
 	position: absolute;
-	width: 100px;
+	color: red;
+	font-size: 10pt;
+	text-align: center;
 	height: 100px;
+	overflow: hidden;
+}
+
+.hub:hover {
+	height: auto;
 }
 
 #hub1-1 {
